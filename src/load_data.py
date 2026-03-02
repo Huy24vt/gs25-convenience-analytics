@@ -1,8 +1,10 @@
 ﻿import pandas as pd
 from pathlib import Path
 
+
 def load_data(data_dir: str):
-    \"\"\"Load convenience store dataset from CSV folder.
+    """
+    Load convenience store dataset from CSV folder.
 
     Expected files in data_dir:
       - stores.csv
@@ -10,7 +12,8 @@ def load_data(data_dir: str):
       - customers.csv
       - transactions.csv
       - transaction_lines.csv
-    \"\"\"
+    """
+
     d = Path(data_dir)
 
     stores = pd.read_csv(d / "stores.csv")
@@ -19,7 +22,6 @@ def load_data(data_dir: str):
     transactions = pd.read_csv(d / "transactions.csv")
     lines = pd.read_csv(d / "transaction_lines.csv")
 
-    # Parse datetime
     transactions["datetime"] = pd.to_datetime(transactions["datetime"])
 
     return {
